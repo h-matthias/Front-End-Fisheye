@@ -6,7 +6,105 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
 }
+
+.photograph-header h1{
+    font-size: 64px;
+    font-weight: 400;
+    color: #DB8876;
+}
+.photograph-header .city {
+    color: #901C1C;
+    font-size: 24px;
+}
+.photograph-header .tag {
+    font-size: 18px;
+    color: #525252;
+}
+.photograph-header aside{
+    display: none;
+    position: absolute;
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 5px 5px 0 0;
+    background: #DB8876;
+    text-align: end;
+    bottom: 0;
+    right: 50px;
+}
+.photograph-header aside p{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.photograph-header img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+.photograph-media {
+    padding: 50px;
+    margin: 0 50px;
+}
+.photograph-media div{
+    overflow: hidden;
+
+}
+.photograph-media label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.photograph-media select{
+    background: #901C1C;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    color: white;
+}
+
+.photograph-media ul {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+.photograph-media ul img,
+.photograph-media ul video {
+    width: 350px;
+    height: 351px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.photograph-media ul li{
+    display: flex;
+    flex-direction: column;
+}
+.photograph-media ul div{
+    height: 51px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 24px;
+    color: #901C1C;
+}
+.photograph-media ul div p:first-child{
+    width: 250px;
+     white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 
 .contact_button {
     font-size: 20px;
@@ -19,6 +117,23 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+    outline: none;
+    background-color: #DB8876;
+    color: black;
+}
+.closeModal{
+    background: none;
+    padding: 10px;
+    border: none;
+}
+.closeModal:hover,
+.closeModal:focus{
+    outline: #901C1C 2px solid;
+    background: #901C1C;
 }
 
 .modal {
@@ -36,6 +151,7 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-left: 0;
 }
 
 .modal header img {
