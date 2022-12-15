@@ -1,7 +1,8 @@
-function photographerFactory(data) {
+function photographerFactory(data, totalLikes) {
 	const { id, name, portrait, city, country, tagline, price } = data
 
 	const picture = `assets/photographers/${portrait}`
+	const heart = 'assets/icons/heart-black.svg'
 	//page index.html
 	function getUserCardDOM() {
 		const article = document.createElement('article')
@@ -64,15 +65,25 @@ function photographerFactory(data) {
 		const aside = document.createElement('aside')
 		const plike = document.createElement('p')
 		const pPrice = document.createElement('p')
-		
-		pPrice.textContent = `${price}€/jour`
+		const img = document.createElement('img')
 
+		plike.textContent = totalLikes
+		plike.classList.add('total-likes')
+		img.setAttribute('src', heart)
+		img.setAttribute('alt', 'total likes')
+		img.classList.add('total-likes-img')
+		pPrice.textContent = `${price}€/jour`
+		pPrice.classList.add('price-per-day')
+
+		aside.appendChild(plike)
+		aside.appendChild(img)
 		aside.appendChild(pPrice)
 
 
 		return {infoPhotographer, photo, aside}
 	}
 	return {
+		name,
 		getOneUserCardDOM,
 		getUserCardDOM,
 	}
