@@ -37,7 +37,6 @@ function mediaFactory(data, name) {
 			divMedia.appendChild(video)
 			li.appendChild(divMedia)
 		}
-		divMedia.setAttribute('onclick', 'openCarousel()')
 
 		pName.textContent = title
 		pLikes.textContent = likes

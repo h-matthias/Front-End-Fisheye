@@ -1,10 +1,10 @@
 //Dom Element
 const carousel = document.querySelector('.carousel')
-const closeCarouselBtn =document.querySelector('.closeCarousel')
+const closeCarouselBtn = document.querySelector('.closeCarousel')
 
-let listItems
-let listItemsCarousel
-let indexCarousel
+let listItems = []
+let listItemsCarousel = []
+let indexCarousel = 0
 let isCarouselOpen = false
 
 window.addEventListener('load', () => {
@@ -14,35 +14,41 @@ window.addEventListener('load', () => {
 	listItems.forEach((item, index) => {
 		item.addEventListener('click', () => openCarousel(index))
 		item.addEventListener('keydown', (keyboardEvent) => {
-            if (keyboardEvent.key == "Enter"){
-            console.log(keyboardEvent.key);
-                openCarousel(index)
-            }
-        })
-        
+			if (keyboardEvent.key == 'Enter') {
+				openCarousel(index)
+			}
+		})
+	})
+	function openCarousel(index) {
+		isCarouselOpen = true
+		carousel.style.display = 'block'
+		listItemsCarousel[index].style.display = 'block'
+		listItemsCarousel[index].setAttribute('aria-hidden', false)
+		carousel.setAttribute('aria-hidden', false)
+		main.setAttribute('aria-hidden', true)
+		headerMenu.setAttribute('aria-hidden', true)
+		main.style.display = 'none'
+		body.classList.add('no-scroll')
+		indexCarousel = index
+	}
+
+	//evenement de gestion carousel avec touche clavier
+	window.addEventListener('keydown', (keyboardEvent) => {
+		switch (keyboardEvent.key) {
+			case 'Escape':
+				escapeCarousel(keyboardEvent)
+				break
+			case 'ArrowRight':
+				if (isCarouselOpen) nextCarousel()
+				break
+			case 'ArrowLeft':
+				if (isCarouselOpen) previousCarousel()
+				break
+			default:
+				break
+		}
 	})
 })
-
-function openCarousel(index) {
-    isCarouselOpen = true
-	carousel.style.display = 'block'
-	listItemsCarousel[index].style.display = 'block'
-	console.log(index, listItemsCarousel[index])
-	listItemsCarousel[index].setAttribute('aria-hidden', false)
-	carousel.setAttribute('aria-hidden', false)
-	main.setAttribute('aria-hidden', true)
-	headerMenu.setAttribute('aria-hidden', true)
-	main.style.display = 'none'
-	body.classList.add('no-scroll')
-	indexCarousel = index
-}
-
-function resetCarousel() {
-	listItemsCarousel.forEach((item) => {
-		item.style.display = 'none'
-		item.setAttribute('aria-hidden', true)
-	})
-}
 
 function closeCarousel() {
 	resetCarousel()
@@ -53,26 +59,14 @@ function closeCarousel() {
 	main.setAttribute('aria-hidden', false)
 	headerMenu.setAttribute('aria-hidden', false)
 	body.classList.remove('no-scroll')
-    listItems[indexCarousel].children[0].children[0].focus()
+	listItems[indexCarousel].children[0].children[0].focus()
 }
-
-//evenement de gestion carousel avec touche clavier
-window.addEventListener('keydown', (keyboardEvent) => {
-	switch (keyboardEvent.key) {
-		case 'Escape':
-			escapeCarousel(keyboardEvent)
-			break
-		case 'ArrowRight':
-			if (isCarouselOpen) nextCarousel()
-			break
-		case 'ArrowLeft':
-			if (isCarouselOpen) previousCarousel()
-			break
-		default:
-			break
-	}
-})
-
+function resetCarousel() {
+	listItemsCarousel.forEach((item) => {
+		item.style.display = 'none'
+		item.setAttribute('aria-hidden', true)
+	})
+}
 function escapeCarousel(keyboardEvent) {
 	const attrs = main.getAttribute('aria-hidden')
 	if (keyboardEvent.key === 'Escape' && attrs) {
@@ -80,18 +74,10 @@ function escapeCarousel(keyboardEvent) {
 	}
 }
 
-// const next = document.querySelector('.next')
-// const prev = document.querySelector('.prev')
-// next.addEventListener('click', () => nextCarousel())
-// prev.addEventListener('click', () => previousCarousel())
-
-
 function nextCarousel() {
 	const curentIndex = indexCarousel
 	const nextIndex =
-		curentIndex == listItemsCarousel.length - 1
-			? 0
-			: curentIndex + 1
+		curentIndex == listItemsCarousel.length - 1 ? 0 : curentIndex + 1
 
 	listItemsCarousel[curentIndex].setAttribute('aria-hidden', true)
 	listItemsCarousel[curentIndex].style.display = 'none'
