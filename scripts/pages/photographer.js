@@ -17,29 +17,32 @@ async function getProjectPhotographer() {
 		medias,
 	}
 }
-
-async function displayMedia(medias, photographer, totalLikes) {
+async function displayphotographer(photographer, totalLikes) {
 	const photographerSection = document.querySelector('.photograph-header')
 
 	const photographerModel = photographerFactory(photographer, totalLikes)
 	const { infoPhotographer, photo, aside } =
 		photographerModel.getOneUserCardDOM()
+
 	photographerSection.prepend(infoPhotographer)
 	photographerSection.appendChild(photo)
 	photographerSection.appendChild(aside)
+}
 
+async function displayMedia(medias, photographer) {
 	const mediaSection = document.querySelector('.list-item')
-    const mediaCarousel = document.querySelector('.list-carousel')
+	const mediaCarousel = document.querySelector('.list-carousel')
+	mediaCarousel.innerHTML = ""
+	mediaSection.innerHTML = ""
 
 	medias.forEach((media) => {
 		const mediaModel = mediaFactory(media, photographer.name)
-        //card DOM insert
+		//card DOM insert
 		const mediaCardDOM = mediaModel.getMediaCardDOM()
 		mediaSection.appendChild(mediaCardDOM)
-        //carousel DOM insert
-        const mediaCarouselDom = mediaModel.getMediaCarouselDom()
-        mediaCarousel.appendChild(mediaCarouselDom)
-
+		//carousel DOM insert
+		const mediaCarouselDom = mediaModel.getMediaCarouselDom()
+		mediaCarousel.appendChild(mediaCarouselDom)
 	})
 }
 
@@ -53,8 +56,40 @@ async function init() {
 	const likes = medias.map((mediaLikes) => mediaLikes.likes)
 	const totalLikes = likes.reduce((acc, curr) => acc + curr, 0)
 
-	displayMedia(medias, photographer, totalLikes)
+	orderMedia(medias, 'Popularité')
+
+	displayphotographer(photographer, totalLikes)
+	displayMedia(medias, photographer)
 	displayNameArtistInModal(photographer)
 }
 
 init()
+
+function orderMedia(media, order) {
+	switch (order) {
+		case 'Popularité':
+			media.sort((a, b) => {
+				return b.likes - a.likes
+			})
+			break
+		case 'Date':
+			media.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date)
+			})
+			break
+		case 'Titre':
+			media.sort((a, b) => {
+				return a.title.localeCompare(b.title)
+			})
+			break
+		default:
+			break
+	}
+}
+
+async function updateMedia(order) {
+	const { photographer, medias } = await getProjectPhotographer()
+	orderMedia(medias, order)
+
+	displayMedia(medias, photographer)
+}

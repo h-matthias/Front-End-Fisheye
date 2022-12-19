@@ -33,12 +33,24 @@
 			</section>
 			<section class="photograph-media">
 				<div class="block-tri">
+					
 					<label for="selectTri">Trier par</label>
 					<select name="order by" id="selectTri">
-						<option value="Popularité">Popularité</option>
-						<option value="Date">Date</option>
-						<option value="Titre">Titre</option>
+						<option selected id="Popularite" value="Popularité">
+							Popularite
+						</option>
+						<option id="Date" value="Date">Date</option>
+						<option id="Titre" value="Titre">Titre</option>
 					</select>
+
+					<div aria-hidden="true"  class="custom-select">
+						<div class="selected" tabindex="0">
+							<p></p>
+							<img src="assets/icons/arrow-white.svg" alt="" />
+						</div>
+						<div class="option"></div>
+					</div>
+
 				</div>
 				<ul class="list-item"></ul>
 			</section>
@@ -147,6 +159,7 @@
 
 		<script src="scripts/factories/photographer.js"></script>
 		<script src="scripts/factories/media.js"></script>
+		<script src="scripts/utils/custom-select.js"></script>
 		<script src="scripts/pages/photographer.js"></script>
 		<script src="scripts/utils/like.js"></script>
 		<script src="scripts/utils/contactForm.js"></script>
