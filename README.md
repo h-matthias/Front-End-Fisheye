@@ -2,5 +2,10 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+Il suffit d'ouvrir le fichier `index.html`.
+
+## Eslint
+
+`npm install` pour installer Eslint
+`npm run lint` pour exécuter Eslint
 

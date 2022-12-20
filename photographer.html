@@ -33,7 +33,6 @@
 			</section>
 			<section class="photograph-media">
 				<div class="block-tri">
-					
 					<label for="selectTri">Trier par</label>
 					<select name="order by" id="selectTri">
 						<option selected id="Popularite" value="Popularité">
@@ -43,18 +42,19 @@
 						<option id="Titre" value="Titre">Titre</option>
 					</select>
 
-					<div aria-hidden="true"  class="custom-select">
+					<div aria-hidden="true" class="custom-select">
 						<div class="selected" tabindex="0">
 							<p></p>
 							<img src="assets/icons/arrow-white.svg" alt="" />
 						</div>
 						<div class="option"></div>
 					</div>
-
 				</div>
+				<!-- list oeuvre artise -->
 				<ul class="list-item"></ul>
 			</section>
 		</main>
+		<!-- modal contact -->
 		<div
 			id="contact_modal"
 			role="dialog"
@@ -103,58 +103,67 @@
 				</form>
 			</div>
 		</div>
+		<!-- modal ligthBox Caoursel -->
 		<div
 			role="dialog"
 			class="carousel"
 			aria-hidden="true"
 			aria-label="image closeup view"
 		>
-			<ul class="list-carousel">
-				<button
-					aria-label="fermer le carousel"
-					class="closeCarousel"
-					onclick="closeCarousel()"
-				>
-					<img
-						aria-hidden="true"
-						alt=""
-						src="assets/icons/closeCarousel.svg"
-					/>
-				</button>
-
-				<button
+			<div class="container">
+				<!-- boutton precedent -->
+				<div>
+					<button
 					role="button"
 					tabindex="0"
 					onclick="previousCarousel()"
 					class="controls controls-left"
-				>
+					>
 					<span class="img prev-image">
 						<img
-							aria-hidden="true"
-							class="arrow prev"
-							src="assets/icons/arrow.svg"
+						aria-hidden="true"
+						class="arrow prev"
+						src="assets/icons/arrow.svg"
 							alt="media précedent"
-						/>
-					</span>
-					<p class="sr-only">Précedent</p>
-				</button>
-				<button
-					role="button"
-					tabindex="0"
-					onclick="nextCarousel()"
-					class="controls controls-right"
-				>
-					<span class="img prev-image">
+							/>
+						</span>
+						<p class="sr-only">Précedent</p>
+					</button>
+				</div>
+				<!-- List carousel -->
+				<ul class="list-carousel"></ul>
+				<div>
+					<!-- Boutton fermer -->
+					<button
+						aria-label="fermer le carousel"
+						class="closeCarousel"
+						onclick="closeCarousel()"
+					>
 						<img
 							aria-hidden="true"
-							class="arrow next"
-							src="assets/icons/arrow.svg"
-							alt="media suivant"
+							alt=""
+							src="assets/icons/closeCarousel.svg"
 						/>
-					</span>
-					<p class="sr-only">Suivant</p>
-				</button>
-			</ul>
+					</button>
+					<!-- bouton suivant -->
+					<button
+						role="button"
+						tabindex="0"
+						onclick="nextCarousel()"
+						class="controls controls-right"
+					>
+						<span class="img prev-image">
+							<img
+								aria-hidden="true"
+								class="arrow next"
+								src="assets/icons/arrow.svg"
+								alt="media suivant"
+							/>
+						</span>
+						<p class="sr-only">Suivant</p>
+					</button>
+				</div>
+			</div>
 		</div>
 
 		<script src="scripts/factories/photographer.js"></script>
