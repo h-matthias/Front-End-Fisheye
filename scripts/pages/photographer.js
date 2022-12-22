@@ -32,8 +32,8 @@ async function displayphotographer(photographer, totalLikes) {
 async function displayMedia(medias, photographer) {
 	const mediaSection = document.querySelector('.list-item')
 	const mediaCarousel = document.querySelector('.list-carousel')
-	mediaCarousel.innerHTML = ""
-	mediaSection.innerHTML = ""
+	mediaCarousel.innerHTML = ''
+	mediaSection.innerHTML = ''
 
 	medias.forEach((media) => {
 		const mediaModel = mediaFactory(media, photographer.name)
@@ -92,4 +92,27 @@ async function updateMedia(order) {
 	orderMedia(medias, order)
 
 	displayMedia(medias, photographer)
+	setTimeout(() => {
+		loadLike(), loadCarousel()
+	}, 1000)
 }
+
+//evenement de gestion carousel avec touche clavier
+window.addEventListener('load', () => {
+	window.addEventListener('keydown', (keyboardEvent) => {
+		switch (keyboardEvent.key) {
+			case 'Escape':
+				escapeCarousel(keyboardEvent)
+				escapeModal(keyboardEvent)
+				break
+			case 'ArrowRight':
+				if (isCarouselOpen) nextCarousel()
+				break
+			case 'ArrowLeft':
+				if (isCarouselOpen) previousCarousel()
+				break
+			default:
+				break
+		}
+	})
+})

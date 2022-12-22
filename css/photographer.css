@@ -110,12 +110,16 @@
 	z-index: 10;
 	border-radius: 5px 5px 5px 5px;
 }
-.photograph-media .custom-select .selected:focus, 
-.photograph-media .custom-select .selected:hover {
+.photograph-media .custom-select:focus{
 	outline: none;
 	background: #db8876;
-	color: black;
+}
+.photograph-media .custom-select:focus .selected, 
+.photograph-media .custom-select:hover .selected {
+	outline: none;
+	background: #db8876;
 	border-radius: 5px;
+	color: black;
 }
 .photograph-media .custom-select .selected {
 	display: flex;

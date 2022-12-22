@@ -30,16 +30,6 @@ selectedBtn.addEventListener('click', () => {
 		closeDropdown()
 	}
 })
-selectedBtn.addEventListener('keydown', (keyboardEvent) => {
-	keyboardEvent.stopPropagation()
-	if (keyboardEvent.key == 'Enter') {
-		if (!isDropdownOpen) {
-			openDropdown()
-		} else {
-			closeDropdown()
-		}
-	}
-})
 
 function openDropdown() {
 	isDropdownOpen = true
@@ -66,15 +56,6 @@ function addQuerySelectorAndEventListener(elements) {
 			optionIsSelect = element.textContent
 			updateMedia(optionIsSelect)
 			closeDropdown()
-		})
-		element.addEventListener('keydown', (keyboardEvent) => {
-			if (keyboardEvent.key == 'Enter') {
-				select.selectedIndex = arrayOption.indexOf(element.textContent)
-				optionSelected.textContent = element.textContent
-				optionIsSelect = element.textContent
-				updateMedia(optionIsSelect)
-				closeDropdown()
-			}
 		})
 	})
 }

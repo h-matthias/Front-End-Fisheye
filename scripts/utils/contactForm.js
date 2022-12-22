@@ -29,10 +29,6 @@ function closeModal() {
     body.classList.remove('no-scroll')
     contactButton.focus()
 }
-//evenement de fermeture modal
-window.addEventListener('keydown', (keyboardEvent) =>
-	escapeModal(keyboardEvent)
-)
 function escapeModal(keyboardEvent) {
 	const attrs = main.getAttribute('aria-hidden')
 	if (keyboardEvent.key === 'Escape' && attrs) {
@@ -41,7 +37,6 @@ function escapeModal(keyboardEvent) {
 }
 
 //envoye formulaire en console
-sendButton.addEventListener('click',() => sendForm())
 function sendForm () {
     console.log({
 		first: first.value,
