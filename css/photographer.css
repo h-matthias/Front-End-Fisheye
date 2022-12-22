@@ -185,10 +185,14 @@
 	transition: transform 0.5s;
 	transform: scale(1);
 }
-.photograph-media .list-item img:focus,
-.photograph-media .list-item video:focus {
-	outline: #db8876 3px solid;
-	padding: 1px;
+.photograph-media .list-item .item div:focus{
+	outline: none;
+}
+
+.photograph-media .list-item .item div:focus img,
+.photograph-media .list-item .item div:focus video{
+	outline: #db8876 5px solid;
+	/* padding: 1				px; */
 }
 .photograph-media .list-item img:hover,
 .photograph-media .list-item video:hover {

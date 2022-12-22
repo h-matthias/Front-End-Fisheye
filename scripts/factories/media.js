@@ -25,14 +25,15 @@ function mediaFactory(data, name) {
 		if (!urlVideo) {
 			img.setAttribute('src', urlPicture)
 			img.setAttribute('alt', title + ' closeup view')
-			img.setAttribute('tabindex', 0)
+			divMedia.setAttribute('tabindex', 0)
 			divMedia.setAttribute('role', 'link')
 			divMedia.appendChild(img)
 			li.appendChild(divMedia)
 		} else {
 			video.setAttribute('src', urlVideo)
 			video.setAttribute('alt', title + ' closeup view')
-			video.setAttribute('tabindex', 0)
+			video.setAttribute('aria-label', title + ' closeup view')
+			divMedia.setAttribute('tabindex', 0)
 			divMedia.setAttribute('role', 'link')
 			divMedia.appendChild(video)
 			li.appendChild(divMedia)
