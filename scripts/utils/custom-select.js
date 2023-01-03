@@ -30,6 +30,13 @@ selectedBtn.addEventListener('click', () => {
 		closeDropdown()
 	}
 })
+customSelected.addEventListener('keypress', (key) => {
+	if (!isDropdownOpen && key.key ==="Enter") {
+		openDropdown()
+	} else {
+		closeDropdown()
+	}
+})
 
 function openDropdown() {
 	isDropdownOpen = true

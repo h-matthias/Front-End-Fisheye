@@ -36,6 +36,9 @@ function escapeModal(keyboardEvent) {
 	}
 }
 
+//event sendForm
+sendButton.addEventListener('click', () => sendForm() )
+
 //envoye formulaire en console
 function sendForm () {
     console.log({

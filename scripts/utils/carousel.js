@@ -19,7 +19,9 @@ function loadCarousel() {
 
 	listItems.forEach((item, index) => {
 		item.addEventListener('click', () => openCarousel(index))
-		
+		item.addEventListener('keypress', (key) => {
+			if (key.key === 'Enter') openCarousel(index)
+		})
 	})
 	function openCarousel(index) {
 		isCarouselOpen = true

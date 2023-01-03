@@ -11,6 +11,10 @@ function loadLike() {
 			e.stopPropagation()
 			likesItem(index)
 		})
+		btnLike.addEventListener('keypress', (key) => {
+			key.stopPropagation()
+			if (key.key === "Enter") likesItem(index)
+		})
 	})
 
 	function likesItem(index) {
