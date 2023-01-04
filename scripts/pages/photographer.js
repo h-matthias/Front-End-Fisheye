@@ -102,8 +102,11 @@ window.addEventListener('load', () => {
 	window.addEventListener('keydown', (keyboardEvent) => {
 		switch (keyboardEvent.key) {
 			case 'Escape':
-				escapeCarousel(keyboardEvent)
-				escapeModal(keyboardEvent)
+				if (isCarouselOpen) {
+					escapeCarousel()
+				} else if (isModalFormOpen) {
+					escapeModal()
+				}
 				break
 			case 'ArrowRight':
 				if (isCarouselOpen) nextCarousel()

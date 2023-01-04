@@ -13,7 +13,10 @@ const contactButton = document.querySelector('.contact_button')
 
 const sendButton = document.querySelector('.sendForm')
 
+let isModalFormOpen = false
+
 function displayModal() {
+	isModalFormOpen = true
 	modal.style.display = 'block'
     modal.setAttribute('aria-hidden', false)
 	body.classList.add('no-scroll')
@@ -22,6 +25,7 @@ function displayModal() {
 	closeModalBtn.focus()
 }
 function closeModal() {
+	isModalFormOpen = false
     modal.style.display = "none";
     modal.setAttribute('aria-hidden', true)
     main.setAttribute('aria-hidden', false)
@@ -29,9 +33,8 @@ function closeModal() {
     body.classList.remove('no-scroll')
     contactButton.focus()
 }
-function escapeModal(keyboardEvent) {
-	const attrs = main.getAttribute('aria-hidden')
-	if (keyboardEvent.key === 'Escape' && attrs) {
+function escapeModal() {
+	if (isModalFormOpen) {
 		closeModal()
 	}
 }

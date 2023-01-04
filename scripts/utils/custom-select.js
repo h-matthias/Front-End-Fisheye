@@ -31,7 +31,7 @@ selectedBtn.addEventListener('click', () => {
 	}
 })
 customSelected.addEventListener('keypress', (key) => {
-	if (!isDropdownOpen && key.key ==="Enter") {
+	if (!isDropdownOpen && key.key === 'Enter') {
 		openDropdown()
 	} else {
 		closeDropdown()
@@ -61,8 +61,22 @@ function addQuerySelectorAndEventListener(elements) {
 			select.selectedIndex = arrayOption.indexOf(element.textContent)
 			optionSelected.textContent = element.textContent
 			optionIsSelect = element.textContent
-			updateMedia(optionIsSelect)
 			closeDropdown()
+			updateMedia(optionIsSelect)
+		})
+	})
+	elements.forEach((element) => {
+		element.addEventListener('keypress', (key) => {
+			if (key.key === 'Enter') {
+				select.selectedIndex = arrayOption.indexOf(element.textContent)
+				optionSelected.textContent = element.textContent
+				optionIsSelect = element.textContent
+				updateMedia(optionIsSelect)
+				setTimeout( () => {
+					closeDropdown()
+				},1
+				)
+			}
 		})
 	})
 }

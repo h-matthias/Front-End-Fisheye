@@ -46,9 +46,9 @@ function closeCarousel() {
 	main.setAttribute('aria-hidden', false)
 	headerMenu.setAttribute('aria-hidden', false)
 	body.classList.remove('no-scroll')
-	listItems[indexCarousel].children[0].children[0].focus()
+	listItems[indexCarousel].children[0].focus()
 }
-
+//Remet tout les items de la carousel à "none" avec "aria-hiden" à true
 function resetCarousel() {
 	listItemsCarousel.forEach((item) => {
 		item.style.display = 'none'
@@ -56,9 +56,8 @@ function resetCarousel() {
 	})
 }
 
-function escapeCarousel(keyboardEvent) {
-	const attrs = main.getAttribute('aria-hidden')
-	if (keyboardEvent.key === 'Escape' && attrs) {
+function escapeCarousel() {
+	if (isCarouselOpen) {
 		closeCarousel()
 	}
 }
