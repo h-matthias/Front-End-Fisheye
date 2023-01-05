@@ -31,7 +31,7 @@ function loadLike() {
 		const totallike = Number(totalLikes.textContent)
 		numbersOfLikes[index].textContent = numberLike - 1
 		totalLikes.textContent = totallike - 1
-		likesBtns[index].setAttribute('src', '/assets/icons/heart.svg')
+		likesBtns[index].setAttribute('src', './assets/icons/heart.svg')
 		likesBtns[index].removeAttribute('aria-label')
 	}
 	function like(index) {
@@ -40,7 +40,7 @@ function loadLike() {
 		const totallike = Number(totalLikes.textContent)
 		numbersOfLikes[index].textContent = numberLike + 1
 		totalLikes.textContent = totallike + 1
-		likesBtns[index].setAttribute('src', '/assets/icons/heart-black.svg')
+		likesBtns[index].setAttribute('src', './assets/icons/heart-black.svg')
 		likesBtns[index].setAttribute('aria-label', 'Vou aimez déjà ce media')
 	}
 }
